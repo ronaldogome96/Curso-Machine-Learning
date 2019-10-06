@@ -28,6 +28,7 @@ previsores = scaler.fit_transform(previsores)
 
 #esse codigo nao rodou no meu spyder, afirmou um erro de
 #No module name sklearn.cross_validation
-from sklearn.cross_validation import train_test_split
+#Procurei na internet e troquei o comando e aparentemente deu certo
+from sklearn.model_selection import train_test_split
 previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size=0.15, random_state=0)
 
