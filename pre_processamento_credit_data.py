@@ -22,3 +22,18 @@ base['age'].mean()
 base['age'][base.age>0].mean()
 base.loc[base.age<0 , 'age'] =40.92
 
+#Cria duas novas base de dados, com valores especificos
+previsores = base.iloc[:, 1:4].values
+classe = base.iloc[:,4].values
+
+#Faz a substituição de valores faltantes para a media
+from sklearn.preprocessing import Imputer
+imputer= Imputer(missing_values='NaN', strategy='mean', axis=0)
+imputer= imputer.fit(previsores[:, 0:3])
+previsores[: , 0:3] = imputer.transform(previsores[:,0:3])
+
+
+
+
+
+
