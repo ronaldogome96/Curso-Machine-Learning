@@ -32,4 +32,8 @@ previsores = onehotencoder.fit_transform(previsores).toarray()
 labelencoder_classe = LabelEncoder()
 classe = labelencoder_classe.fit_transform(classe)
 
-
+#Faz a trasnformação linear
+#Nesse caso nao ajuda muito
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+previsores = scaler.fit_transform(previsores)
