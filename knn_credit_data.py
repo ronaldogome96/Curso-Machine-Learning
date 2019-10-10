@@ -22,7 +22,10 @@ previsores = scaler.fit_transform(previsores)
 from sklearn.model_selection import train_test_split
 previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size=0.25, random_state=0)
 
+#Faz a importação da biblioteca que usa o knn
 from sklearn.neighbors import KNeighborsClassifier
+#n_neighbors=5 é o K, o numero de vizinhos
+# metric='minkowski' é o padrao, para usar a distancia euclidiaa
 classificador = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
 classificador.fit(previsores_treinamento, classe_treinamento)
 previsoes = classificador.predict(previsores_teste)
