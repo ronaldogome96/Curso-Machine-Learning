@@ -21,9 +21,31 @@ regressor = LinearRegression()
 #Faz o treinamento da base de dados
 regressor.fit(x,y)
 
-#b0
+#b1
 regressor.intercept_
 
-#b1
+#b0
 regressor.coef_
 
+import matplotlib.pyplot as plt
+#Mostra o grafico
+plt.scatter(x,y)
+#Faz a previsao dos valores e cria a reta no grafico
+plt.plot(x, regressor.predict(x), color= 'red')
+plt.title('Regressao Linear simples')
+plt.xlabel('Idade')
+plt.ylabel('Custo')
+
+#Esse previsao 1 nao deu certo no meu pc, deu um erro de array
+previsao1 = regressor.predict(40)
+#Ja esse deu certo, criou normalmente
+previsao2 = regressor.intercept_ + regressor.coef_ * 40
+
+#Mostra o quanto ele esta adptado ao data set
+score = regressor.score(x,y)
+
+from yellowbrick.regressor import ResidualsPlot
+#Mostra os erros e a distancia de cada ponto para a reta
+visualizador = ResidualsPlot(regressor)
+visualizador.fit(x,y)
+visualizador.poof()
